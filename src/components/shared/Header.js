@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink, Redirect, Link, Switch,} from 'react-router-dom';
 
 class Header extends Component {
 
@@ -17,9 +18,8 @@ class Header extends Component {
 			        </div>
 			        <div id="navbar" className="collapse navbar-collapse">
 			          <ul className="nav navbar-nav">
-			            <li className="active"><a href="#">Home</a></li>
-			            <li><a href="#about">About</a></li>
-			            <li><a href="#contact">Contact</a></li>
+			            <li className="active"><Link to="/home">Home</Link></li>
+			            <li><Link to="/signup">Signup</Link></li>
 			          </ul>
 			        </div>
 			      </div>
