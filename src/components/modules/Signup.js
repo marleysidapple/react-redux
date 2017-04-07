@@ -9,6 +9,9 @@ class Signup extends Component {
 	  }
 
 
+	
+
+
 	handleChange(event){
 		this.setState({fullname: event.target.value});
 	}
