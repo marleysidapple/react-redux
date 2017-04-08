@@ -25,11 +25,11 @@ class SignupRequest extends FormRequest
     {
         return [
             'email'            => 'required',
-            // 'fullname'         => 'required',
-            // 'mobile'           => 'required',
-            // 'address'          => 'required',
-            // 'password'         => 'required',
-            // 'confirm_password' => 'required|same:password'
+            'fullname'         => 'required',
+            'mobile'           => 'required',
+            'address'          => 'required',
+            'password'         => 'required',
+            'confirm_password' => 'required|same:password'
         ];
     }
 }
