@@ -23,10 +23,17 @@ $api->version('v1', function ($api) {
 	$api->group(['namespace' => 'App\Http\Controllers\Api\V1'], function($api){ //start of group
 
 		/*
-		* signup route
-		* GET
+		* register route
+		* POST
 		*/
 	 	$api->post('auth/register', 'SignupController@create');
+
+
+	 	/*
+	 	* login route
+	 	* POST
+	 	*/
+	 	$api->post('auth/login', 'SignupController@authenticate');
 
 	 }); //end of group
 });
