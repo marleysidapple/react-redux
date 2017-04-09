@@ -26,7 +26,7 @@ $api->version('v1', function ($api) {
 		* signup route
 		* GET
 		*/
-	 	$api->post('auth/register', 'SignupController@index');
+	 	$api->post('auth/register', 'SignupController@create');
 
 	 }); //end of group
 });

@@ -10,7 +10,7 @@ use DB;
 
 class SignupController extends Controller
 {
-    public function index(SignupRequest $request)
+    public function create(SignupRequest $request)
     {
     	DB::BeginTransaction();
     	try {
