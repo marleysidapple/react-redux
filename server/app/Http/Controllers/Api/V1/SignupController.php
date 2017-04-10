@@ -29,9 +29,9 @@ class SignupController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return response()->json('something went wrong', 400);
+            return response()->json(['error'=>'something went wrong'], 401);
         }
-        return response()->json('user registered successfully', 200);
+        return response()->json(['success' => 'user registered successfully'], 200);
     }
 
     public function authenticate(Request $request)
