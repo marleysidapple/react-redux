@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './../../App.css';
+import axios from 'axios';
 
 class Signup extends Component {
 
@@ -26,7 +27,7 @@ class Signup extends Component {
 
 	handleSubmit(event) {
 	 event.preventDefault();
-     console.log(this.state);
+     axios.post('http://localhost:8000/api/v1/auth/register', {user: this.state});
    }
 
 
