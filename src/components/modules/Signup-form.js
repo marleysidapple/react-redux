@@ -28,7 +28,8 @@ class Signupform extends Component {
 
 	handleSubmit(event) {
 	 event.preventDefault();
-     axios.post(this.base_url + '/auth/register', {user: this.state});
+     this.props.userSignupRequest(this.state);
+     //axios.post(this.base_url + '/auth/register', {user: this.state});
    }
 
 	render(){
@@ -70,5 +71,11 @@ class Signupform extends Component {
 			);
 	}
 }
+
+
+Signupform.propTypes = {
+	userSignupRequest: React.PropTypes.func.isRequired
+}
+
 
 export default Signupform;
