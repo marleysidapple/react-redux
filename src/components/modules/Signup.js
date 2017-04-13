@@ -12,7 +12,7 @@ class Signup extends Component {
 
 		return(
 			<div className="panel panel-default registration">
-				  <div className="panel-heading">Register Here</div>
+				  <div className="panel-heading">User Registration</div>
 				  	<div className="panel-body">
 						<Signupform userSignupRequest={userSignupRequest} />
 					</div>
