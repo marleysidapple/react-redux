@@ -1,3 +1,4 @@
+//reducers handles the action type
 import axios from 'axios';
 
 export function userSignupRequest(userData){
