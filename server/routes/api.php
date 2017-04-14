@@ -35,5 +35,19 @@ $api->version('v1', function ($api) {
 	 	*/
 	 	$api->post('auth/login', 'SignupController@authenticate');
 
+
+	 	/**
+	 	* get route
+	 	* get all post
+	 	* @param int $id optional
+	 	*/
+	 	$api->get('posts/{id?}', 'PostController@index');
+
+	 	/**
+	 	* post route
+	 	* save all posts
+	 	*/
+	 	$api->post('post/store', 'PostController@store');
+
 	 }); //end of group
 });
