@@ -44,10 +44,7 @@ class PostController extends Controller
         return response()->json(['post' => $post], 200);
     }
 
-    public function edit()
-    {
-
-    }
+   
 
     public function update()
     {
