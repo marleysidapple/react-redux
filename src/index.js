@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Home from './components/modules/Home';
 import Post from './components/modules/Post';
+import Addpost from './components/modules/add_post';
 import Signup from './components/modules/Signup';
 import './index.css';
 import { BrowserRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom';
@@ -24,10 +25,11 @@ ReactDOM.render(
       <Provider store={store(reducers)}>
 	      <BrowserRouter>
 		    <App>
-		    	<Route exact={true} path="/" component={Home} />
-		    	<Route path="/home" component={Home}/> 
-		    	<Route path="/signup" component={Signup}/> 
-		    	<Route path="/post" component={Post}/> 
+			    <Route exact={true} path="/" component={Home} />
+			    <Route path="/home" component={Home}/> 
+			    <Route path="/signup" component={Signup}/> 
+			    <Route exact path="/post" component={Post} /> 
+			    <Route path="/post/new" component={Addpost} />				
 		    </App>
 		  </BrowserRouter>
 	  </Provider>,

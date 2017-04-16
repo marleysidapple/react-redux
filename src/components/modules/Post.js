@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 //import { bindActionCreators } from 'redux';
 import { fetchPosts } from './../../actions/index'; 
+import {NavLink, Redirect, Link, Switch,} from 'react-router-dom';
 
 class Post extends Component {
 
@@ -12,7 +13,7 @@ class Post extends Component {
 
 	render(){
 		return(
-			<p>This is post list</p>
+			<p>This is post list <Link to='/post/new'>Add New Post</Link></p>
 		);
 	}
 }
