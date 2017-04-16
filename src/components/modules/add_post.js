@@ -6,16 +6,17 @@ import { connect } from 'react-redux';
 
 
 class AddPost extends Component {
-	
 
+
+	
 	render(){
-		  const { handleSubmit } = this.props;
+		  const { fields: {title}, handleSubmit } = this.props;
 		return (
 				<div className="post-wrap">
 					<form onSubmit={handleSubmit}>
 						<div className="form-group">
 							<label>Title</label>
-							<Field className="form-control" component="input" type="text" name="title"  />
+							<Field className="form-control" component="input" type="text" name="title" {...title}  />
 						</div>
 						<button className="btn btn-primary btn-sm">Submit</button>
 					</form>
@@ -23,6 +24,19 @@ class AddPost extends Component {
 			);
 	}
 }
+
+
+
+
+function validate(values){
+	const errors = {};
+	if(!values.title){
+		errors.title = 'Enter a title';
+	}
+
+	return errors;
+}
+
 
 
 
@@ -34,7 +48,7 @@ class AddPost extends Component {
 export default reduxForm({
 	form: 'AddNewPost',  //donot need to match with the class name
 	//fields: ['title', 'author', 'keyword', 'description']
-	//fields: ['title']
+	fields: ['title'],
 	onSubmit: (post) => createPost(post)
 })(AddPost);
 
