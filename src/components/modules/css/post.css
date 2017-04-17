@@ -1,3 +1,7 @@
 .post-wrap{
 	margin: 20px;
 }
+
+span.help-block{
+	color: red;
+}
