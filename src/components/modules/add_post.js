@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import './css/post.css';
 import { createPost } from './../../actions/index';
-import { connect } from 'react-redux';
+
+
 
 
 class AddPost extends Component {
-
-
 	
 	render(){
-		  const { fields: {title}, handleSubmit } = this.props;
+		const { fields: {title}, handleSubmit } = this.props;
 		return (
 				<div className="post-wrap">
 					<form onSubmit={handleSubmit}>
@@ -23,18 +22,6 @@ class AddPost extends Component {
 				</div>
 			);
 	}
-}
-
-
-
-
-function validate(values){
-	const errors = {};
-	if(!values.title){
-		errors.title = 'Enter a title';
-	}
-
-	return errors;
 }
 
 
