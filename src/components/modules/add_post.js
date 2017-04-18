@@ -19,6 +19,19 @@ class AddPost extends Component {
 	  </div>
 	)
 
+	const renderFieldForTextArea = ({ input, label, type, meta: { touched, error, invalid, warning } }) => (
+	 <div className={`form-group ${touched && invalid ? 'has-error' : ''}`}>
+	    <label>{label}</label>
+	    <div>
+	      <textarea {...input} placeholder={label} type={type} className="form-control"/>
+	      {touched && ((error && <span className="help-block">{error}</span>) || (warning && <span className="help-block">{warning}</span>))}
+	    </div>
+	  </div>
+	)
+
+
+
+
 		const { fields: {title, author, keyword, description }, handleSubmit,  pristine, reset, submitting} = this.props;
 		return (
 				<div className="post-wrap">
@@ -26,12 +39,9 @@ class AddPost extends Component {
 						<Field name="title" type="text" component={renderField} label="Title"/>
 						<Field name="author" type="text" component={renderField} label="Author"/>
 						<Field name="keyword" type="text" component={renderField} label="Keyword"/>
-
-						<div className="form-group">
-							<label>Description</label>
-							<textarea className="form-control" {...description}/>
-						</div>
-						<button className="btn btn-primary btn-sm" disabled={submitting}>Submit</button>
+						<Field name="description" type="text" component={renderFieldForTextArea} label="Description"/>
+						
+						<button className="btn btn-primary btn-sm"  disabled={pristine || submitting}>Submit</button>
 					</form>
 				</div>
 			);
@@ -50,6 +60,9 @@ function validate(vals){
 	}
 	if (!vals.author){
 		errors.author = 'Author is required';
+	}
+	if (!vals.description){
+		errors.description = 'Description is required';
 	}
 	return errors;
 
