@@ -26,7 +26,6 @@ class PostRequest extends FormRequest
         return [
             'title'       => 'required',
             'author'      => 'required',
-            'posted_date' => 'required',
             'description' => 'required',
             'keyword'     => 'required',
         ];
