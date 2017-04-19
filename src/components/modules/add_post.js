@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import './css/post.css';
 import { createPost } from './../../actions/index';
-import { addFlashMessage } from './../../actions/FlashMessage';
 import { Link } from 'react-router-dom';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
@@ -13,11 +12,9 @@ class AddPost extends Component {
    router:PropTypes.object
  };
 
+ 
+
 	onSubmit(props){
-	  // this.props.addFlashMessage({
-	  // 	type: 'success',
-	  // 	text: 'post creted successfully'
-	  // });
 	  this.props.createPost(props).then(()=>{this.context.router.history.push('/');});
 	}
 
@@ -45,7 +42,7 @@ class AddPost extends Component {
 
 
 
-		const { fields: {title, author, keyword, description }, handleSubmit,  pristine, reset, submitting} = this.props;
+		const { fields: {title, author, keyword, description }, handleSubmit, addFlashMessage, pristine, reset, submitting} = this.props;
 		return (
 				<div className="post-wrap">
 					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
