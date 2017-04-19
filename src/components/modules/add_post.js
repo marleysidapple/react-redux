@@ -1,12 +1,24 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import './css/post.css';
 import { createPost } from './../../actions/index';
+import { Link } from 'react-router-dom';
+import { browserHistory } from 'react-router';
 
 
 class AddPost extends Component {
 
+	static contextTypes = {
+	  router: React.PropTypes.object
+	};
 
+	//  static contextType = {
+	// 	router: PropTypes.object
+	// };
+
+	onSubmit(){
+		console.log('asd');
+	}
 
 	render(){
 	const renderField = ({ input, label, type, meta: { touched, error, invalid, warning } }) => (
@@ -41,7 +53,8 @@ class AddPost extends Component {
 						<Field name="keyword" type="text" component={renderField} label="Keyword"/>
 						<Field name="description" type="text" component={renderFieldForTextArea} label="Description"/>
 						
-						<button className="btn btn-primary btn-sm"  disabled={pristine || submitting}>Submit</button>
+						<button className="btn btn-primary btn-sm"  disabled={pristine || submitting}>Submit</button>&nbsp; &nbsp;
+						<Link to='/' className="btn btn-danger btn-sm">Cancel</Link>
 					</form>
 				</div>
 			);
@@ -70,12 +83,23 @@ function validate(vals){
 
 //connect: first argument is mapStatetoProps. second is mapDispatchToProps
 //reduxForm: first - formConfig, second - mapStateToProps, third - mapDispatchToProps 
+
+
 export default reduxForm({
 	form: 'AddNewPost',  //donot need to match with the class name
 	validate,
 	fields: ['title', 'author', 'keyword', 'description'],
 	onSubmit: (post) => createPost(post),
+	onSubmitSuccess: () => {
+		 console.log('success');
+	//	this.context.router.push('/');
+	}
 })(AddPost);
+
+
+
+
+
 
 
 

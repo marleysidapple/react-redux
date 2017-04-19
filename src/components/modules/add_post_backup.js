@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import './css/post.css';
 import { createPost } from './../../actions/index';
+import { Link } from 'react-router-dom';
 
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
@@ -24,6 +25,7 @@ class AddPost extends Component {
 					<form onSubmit={handleSubmit}>
 						<Field component={renderField} name="title" label="Title" type="text"/>
 						<button className="btn btn-primary btn-sm">Submit</button>
+						<Link to='/' className="btn btn-danger btn-sm">Cancel</Link>
 					</form>
 				</div>
 			);
