@@ -4,20 +4,16 @@ import './css/post.css';
 import { createPost } from './../../actions/index';
 import { Link } from 'react-router-dom';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 
 
 class AddPost extends Component {
+ static contextTypes = {
+   router:PropTypes.object
+ };
 
-	static contextTypes = {
-	  router: React.PropTypes.object
-	};
-
-	//  static contextType = {
-	// 	router: PropTypes.object
-	// };
-
-	onSubmit(){
-		console.log('asd');
+	onSubmit(props){
+	  this.props.createPost(props).then(()=>{this.context.router.history.push('/');});
 	}
 
 	render(){
@@ -47,7 +43,7 @@ class AddPost extends Component {
 		const { fields: {title, author, keyword, description }, handleSubmit,  pristine, reset, submitting} = this.props;
 		return (
 				<div className="post-wrap">
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 						<Field name="title" type="text" component={renderField} label="Title"/>
 						<Field name="author" type="text" component={renderField} label="Author"/>
 						<Field name="keyword" type="text" component={renderField} label="Keyword"/>
@@ -84,18 +80,25 @@ function validate(vals){
 //connect: first argument is mapStatetoProps. second is mapDispatchToProps
 //reduxForm: first - formConfig, second - mapStateToProps, third - mapDispatchToProps 
 
-
+/*
 export default reduxForm({
 	form: 'AddNewPost',  //donot need to match with the class name
 	validate,
 	fields: ['title', 'author', 'keyword', 'description'],
-	onSubmit: (post) => createPost(post),
-	onSubmitSuccess: () => {
-		 console.log('success');
-	//	this.context.router.push('/');
-	}
-})(AddPost);
 
+	//onSubmit: (post) => createPost(post),
+	//onSubmitSuccess: () => {
+	//	 console.log('success');
+	//	this.context.router.push('/');
+	//}
+})(AddPost);
+*/
+
+export default connect(null, {createPost})(reduxForm({
+  form:'AddNewPost',
+  fields: ['title', 'author', 'keyword', 'description'],
+  validate
+})(AddPost));
 
 
 
