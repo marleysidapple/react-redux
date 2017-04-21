@@ -30,6 +30,7 @@ ReactDOM.render(
 			    <Route path="/signup" component={Signup}/> 
 			    <Route exact path="/post" component={Post} /> 
 			    <Route path="/post/new" component={Addpost} />				
+			    <Route path="/post/detail/:id" component={Addpost} />				
 		    </App>
 		  </BrowserRouter>
 	  </Provider>,

@@ -7,7 +7,18 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
 
+
 class AddPost extends Component {
+
+ constructor(props){
+ 	super(props);
+ 	this.state = {
+ 		success: false
+ 	}
+ }
+
+
+
  static contextTypes = {
    router:PropTypes.object
  };
@@ -15,7 +26,18 @@ class AddPost extends Component {
  
 
 	onSubmit(props){
-	  this.props.createPost(props).then(()=>{this.context.router.history.push('/');});
+	  this.props.createPost(props)
+		  	.then(()=>{
+		  		this.setState({success: true});
+		  		// this.props.addFlashMessage({
+		  		// 	type: 'success',
+		  		// 	text: 'signedup successfully'
+		  		// });
+
+		  		//routing to root on successful post creation
+		  		//this.context.router.history.push('/');
+		  	}
+	  );
 	}
 
 	render(){
@@ -45,6 +67,12 @@ class AddPost extends Component {
 		const { fields: {title, author, keyword, description }, handleSubmit, addFlashMessage, pristine, reset, submitting} = this.props;
 		return (
 				<div className="post-wrap">
+					{this.state.success ? 
+						<div className="alert alert-success">
+							Post Created Successfully
+						</div> : ''
+					}				
+					
 					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 						<Field name="title" type="text" component={renderField} label="Title"/>
 						<Field name="author" type="text" component={renderField} label="Author"/>

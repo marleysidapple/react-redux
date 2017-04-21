@@ -17,7 +17,7 @@ class PostController extends Controller
     public function index($id = null)
     {
         $post = $id != "" ? Post::find($id) : Post::all();
-        return response()->json(['post' => $post], 200);
+        return response()->json($post, 200);
     }
 
     /**
