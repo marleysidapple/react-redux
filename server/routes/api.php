@@ -41,7 +41,18 @@ $api->version('v1', function ($api) {
 	 	* get all post
 	 	* @param int $id optional
 	 	*/
-	 	$api->get('posts/{id?}', 'PostController@index');
+	 	$api->get('posts', 'PostController@index');
+
+
+
+	 	/**
+	 	* get route
+	 	* get post by id
+	 	* @param int $id optional
+	 	*/
+	 	$api->get('posts/{id}', 'PostController@findPostById');
+
+
 
 	 	/**
 	 	* post route

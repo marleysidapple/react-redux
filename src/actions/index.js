@@ -8,6 +8,7 @@ import axios from 'axios';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
+export const FETCH_POST_BY_ID = 'FETCH_POST_BY_ID';
 const ROOT_URL = 'http://localhost:8000/api/v1';
 
 export function fetchPosts(){	
@@ -17,6 +18,16 @@ export function fetchPosts(){
 		payload: request
 	};
 
+}
+
+
+export function fetchPostById(id) {
+  const request = axios.get(`${ROOT_URL}/posts/${id}`);
+
+  return {
+    type: FETCH_POST_BY_ID,
+    payload: request
+  };
 }
 
 

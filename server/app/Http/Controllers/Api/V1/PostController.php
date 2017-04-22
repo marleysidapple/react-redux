@@ -14,11 +14,24 @@ class PostController extends Controller
      * @param int $id
      * @return Post
      */
-    public function index($id = null)
+    public function index()
     {
-        $post = $id != "" ? Post::find($id) : Post::all();
+        $post = Post::all();
         return response()->json($post, 200);
     }
+
+
+    /**
+    * @param integer $id
+    * @return Single Post
+    */
+    public function findPostById($id)
+    {
+        $post = Post::find($id);
+        return response()->json($post, 200);
+    }
+
+
 
     /**
      *  @param  array  $data
