@@ -60,5 +60,11 @@ $api->version('v1', function ($api) {
 	 	*/
 	 	$api->post('post/store', 'PostController@store');
 
+	 	/**
+	 	* @param int $id
+	 	* delete post
+	 	*/
+	 	$api->delete('post/delete/{id}', 'PostController@destroy'); 
+
 	 }); //end of group
 });

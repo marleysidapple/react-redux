@@ -20,18 +20,15 @@ class PostController extends Controller
         return response()->json($post, 200);
     }
 
-
     /**
-    * @param integer $id
-    * @return Single Post
-    */
+     * @param integer $id
+     * @return Single Post
+     */
     public function findPostById($id)
     {
         $post = Post::find($id);
         return response()->json($post, 200);
     }
-
-
 
     /**
      *  @param  array  $data
@@ -57,15 +54,28 @@ class PostController extends Controller
         return response()->json(['post' => $post], 200);
     }
 
-   
-
     public function update()
     {
 
     }
 
-    public function destroy()
+    /**
+    * @param int $id
+    * return message
+    * delete post
+    */
+    public function destroy($id)
     {
+        try {
+            $post = Post::find($id);
+            if (is_null($post)){
+                return response()->json(['error' => 'Invalid data'], 401);
+            }
+            $post->delete();
+        } catch (Exception $e) {
+            return response()->json(['error' => 'something went wrong'], 401);
+        }
+        return response()->json(['success' => 'post deleted'], 200);
 
     }
 
