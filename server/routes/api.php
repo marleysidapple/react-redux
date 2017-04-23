@@ -44,14 +44,12 @@ $api->version('v1', function ($api) {
 	 	$api->get('posts', 'PostController@index');
 
 
-
 	 	/**
 	 	* get route
 	 	* get post by id
 	 	* @param int $id optional
 	 	*/
 	 	$api->get('posts/{id}', 'PostController@findPostById');
-
 
 
 	 	/**
@@ -64,7 +62,7 @@ $api->version('v1', function ($api) {
 	 	* @param int $id
 	 	* delete post
 	 	*/
-	 	$api->delete('post/delete/{id}', 'PostController@destroy'); 
+	 	$api->get('post/destroy/{id}', 'PostController@destroy'); 
 
 	 }); //end of group
 });

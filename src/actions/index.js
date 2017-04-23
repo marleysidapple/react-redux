@@ -8,6 +8,7 @@ import axios from 'axios';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
+export const DELETE_POST = 'DELETE_POST';
 export const FETCH_POST_BY_ID = 'FETCH_POST_BY_ID';
 const ROOT_URL = 'http://localhost:8000/api/v1';
 
@@ -26,6 +27,16 @@ export function fetchPostById(id) {
 
   return {
     type: FETCH_POST_BY_ID,
+    payload: request
+  };
+}
+
+
+export function deletePost(id) {
+  const request = axios.get(`${ROOT_URL}/post/destroy/${id}`);
+
+  return {
+    type: DELETE_POST,
     payload: request
   };
 }
