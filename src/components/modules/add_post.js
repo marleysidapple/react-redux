@@ -64,30 +64,6 @@ class AddPost extends Component {
 
 	render(){
 
-/*
-	const renderField = ({ input, label, type, meta: { touched, error, invalid, warning } }) => (
-	 <div className={`form-group ${touched && invalid ? 'has-error' : ''}`}>
-	    <label>{label}</label>
-	    <div>
-	      <input {...input} placeholder={label} type={type} className="form-control"/>
-	      {touched && ((error && <span className="help-block">{error}</span>) || (warning && <span className="help-block">{warning}</span>))}
-	    </div>
-	  </div>
-	)
-
-	const renderFieldForTextArea = ({ input, label, type, meta: { touched, error, invalid, warning } }) => (
-	 <div className={`form-group ${touched && invalid ? 'has-error' : ''}`}>
-	    <label>{label}</label>
-	    <div>
-	      <textarea {...input} placeholder={label} type={type} className="form-control"/>
-	      {touched && ((error && <span className="help-block">{error}</span>) || (warning && <span className="help-block">{warning}</span>))}
-	    </div>
-	  </div>
-	)
-
-*/
-
-
 		const { fields: {title, author, keyword, description }, handleSubmit, addFlashMessage, pristine, reset, submitting} = this.props;
 		return (
 				<div className="post-wrap">
