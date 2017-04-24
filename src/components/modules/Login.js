@@ -17,9 +17,11 @@ class Login extends Component {
 
 	onSubmit(props){
 		this.props.loginCheck(props).then((resp) => {
-			console.log(resp);
+			//console.log(this.);
+			console.log(this.props.token);
 		});
 	}
+
 
 	render(){
 		const { fields: { email, password }, handleSubmit, pristine, reset, submitting} = this.props;
@@ -49,7 +51,12 @@ function validate(vals){
 
 }
 
-export default connect(null, {loginCheck})(reduxForm({
+function mapStateToProps(state){
+	return { token : state.login._token};
+}
+
+
+export default connect(mapStateToProps, {loginCheck})(reduxForm({
   form:'LoginForm',
   fields: ['email', 'password'],
   validate
