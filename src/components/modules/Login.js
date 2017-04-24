@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { loginCheck } from './../../actions/index';
 import { connect } from 'react-redux'; 
 
 const renderField = ({ input, label, type, meta: { touched, error, invalid, warning } }) => (
@@ -14,6 +15,12 @@ const renderField = ({ input, label, type, meta: { touched, error, invalid, warn
 
 class Login extends Component {
 
+	onSubmit(props){
+		this.props.loginCheck(props).then((resp) => {
+			console.log(resp);
+		});
+	}
+
 	render(){
 		const { fields: { email, password }, handleSubmit, pristine, reset, submitting} = this.props;
 		return(
@@ -21,14 +28,29 @@ class Login extends Component {
 					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 						<Field name="email" type="text" component={renderField} label="Email"/>
 						<Field name="password" type="password" component={renderField} label="Password"/>
+						<button className="btn btn-primary btn-sm"  disabled={pristine || submitting}>Login</button>&nbsp; &nbsp;
 					</form>
 				</div>
 			);
 	}
 }
 
-export default connect(null, {})(reduxForm({
+
+function validate(vals){
+	const errors = {};
+
+	if (!vals.email){
+		errors.email = 'email is required';
+	}
+	if (!vals.password){
+		errors.password = 'password is required';
+	}
+	return errors;
+
+}
+
+export default connect(null, {loginCheck})(reduxForm({
   form:'LoginForm',
   fields: ['email', 'password'],
-  //validate
+  validate
 })(Login));

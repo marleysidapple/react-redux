@@ -9,6 +9,7 @@ import axios from 'axios';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
+export const LOGIN_CHECK = 'LOGIN_CHECK';
 export const FETCH_POST_BY_ID = 'FETCH_POST_BY_ID';
 const ROOT_URL = 'http://localhost:8000/api/v1';
 
@@ -46,6 +47,14 @@ export function createPost(props){
 	const request = axios.post(`${ROOT_URL}/post/store`, props);
 	return {
 		type: CREATE_POST,
+		payload: request
+	}
+}
+
+export function loginCheck(props){
+	const request = axios.post(`${ROOT_URL}/auth/login`, props);
+	return {
+		type: LOGIN_CHECK,
 		payload: request
 	}
 }
