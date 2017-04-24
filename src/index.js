@@ -5,6 +5,7 @@ import Home from './components/modules/Home';
 import Post from './components/modules/Post';
 import Addpost from './components/modules/add_post';
 import Signup from './components/modules/Signup';
+import Login from './components/modules/Login';
 import Postdetail from './components/modules/postdetail';
 import './index.css';
 import { BrowserRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom';
@@ -32,6 +33,7 @@ ReactDOM.render(
 			    <Route exact path="/post" component={Post} /> 
 			    <Route path="/post/new" component={Addpost} />				
 			    <Route path="/post/detail/:id" component={Postdetail} />				
+			    <Route path="/login" component={Login} />				
 		    </App>
 		  </BrowserRouter>
 	  </Provider>,

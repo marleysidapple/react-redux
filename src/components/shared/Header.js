@@ -21,6 +21,7 @@ class Header extends Component {
 			            <li className="active"><Link to="/home">Home</Link></li>
 			            <li><Link to="/signup">Signup</Link></li>
 			            <li><Link to="/post">Posts</Link></li>
+			            <li><Link to="/login">Login</Link></li>
 			          </ul>
 			        </div>
 			      </div>
