@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component, PropTypes } from 'react';
+//import logo from './logo.svg';
 import Header from './components/shared/Header';
 import Footer from './components/shared/Footer';
-import './App.css';
+import { connect } from 'react-redux';
+import { loginCheck } from './actions/index';
+//import './App.css';
 
 class App extends Component {
   render() {
+    const { dispatch, isAuthenticated } = this.props;
     return (
       <div>
-        <Header />
+        <Header isAuthenticated={isAuthenticated} dispatch={dispatch} />
           <div className="container wrapper-main">
             <div className="starter-template">
               {this.props.children}
@@ -19,4 +22,16 @@ class App extends Component {
   }
 }
 
+/*
+App.PropTypes = {
+  dispatch: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+}
+
+function mapStateToProps(state){
+  return {authStatus : state.isAuthenticated};
+}
+*/
+
+//export default connect(null, mapStateToProps)(App);
 export default App;
