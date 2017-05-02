@@ -58,3 +58,8 @@ export function loginCheck(props){
 		payload: request
 	}
 }
+
+
+export function loginFailure(){
+	
+}
