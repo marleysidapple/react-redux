@@ -59,7 +59,3 @@ export function loginCheck(props){
 	}
 }
 
-
-export function loginFailure(){
-	
-}
