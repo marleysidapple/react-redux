@@ -8,10 +8,10 @@ import { loginCheck } from './actions/index';
 
 class App extends Component {
   render() {
-    const { dispatch, isAuthenticated } = this.props;
+   // const { isAuthenticated } = this.props;
     return (
       <div>
-        <Header isAuthenticated={isAuthenticated} dispatch={dispatch} />
+        <Header isAuthenticated={isAuthenticated} />
           <div className="container wrapper-main">
             <div className="starter-template">
               {this.props.children}
@@ -23,15 +23,18 @@ class App extends Component {
 }
 
 /*
+
 App.PropTypes = {
-  dispatch: PropTypes.func.isRequired,
+ // dispatch: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired
 }
 
 function mapStateToProps(state){
-  return {authStatus : state.isAuthenticated};
+  console.log(state);
+  return state;
 }
 */
+
 
 //export default connect(null, mapStateToProps)(App);
 export default App;

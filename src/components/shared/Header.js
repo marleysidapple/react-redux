@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {NavLink, Redirect, Link, Switch,} from 'react-router-dom';
 
 class Header extends Component {
 
 	render(){
+		//const { isAuthenticated } = this.props;
 		return (
 			 <nav className="navbar navbar-inverse navbar-fixed-top">
 			      <div className="container">
@@ -29,5 +30,9 @@ class Header extends Component {
 		);
 	}
 }
+
+// Header.PropTypes = {
+// 	isAuthenticated: PropTypes.bool.isRequired
+// }
 
 export default Header;
