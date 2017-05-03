@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import {NavLink, Redirect, Link, Switch,} from 'react-router-dom';
 
 class Header extends Component {
