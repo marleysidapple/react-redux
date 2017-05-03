@@ -16,17 +16,31 @@ const renderField = ({ input, label, type, meta: { touched, error, invalid, warn
 class Login extends Component {
 
 	onSubmit(props){
-		this.props.loginCheck(props).then((resp) => {
-			//console.log(this.);
-			console.log(this.props.token);
-		});
+		this.props.loginCheck(props);
+		/*
+			this.props.loginCheck(props).then((resp) => {
+				console.log(this.props.token);
+			});
+		*/
 	}
+
+	renderAlert() {
+	    if(this.props.errorMessage) {
+	      return (
+	        <div className="alert alert-danger">
+	          <span><strong>Error!</strong> {this.props.errorMessage}</span>
+	        </div>
+	      );
+	    }
+	  }
+
 
 
 	render(){
 		const { fields: { email, password }, handleSubmit, pristine, reset, submitting} = this.props;
 		return(
 				<div className="login-wrapper">
+				{this.renderAlert()}
 					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 						<Field name="email" type="text" component={renderField} label="Email"/>
 						<Field name="password" type="password" component={renderField} label="Password"/>
@@ -52,7 +66,9 @@ function validate(vals){
 }
 
 function mapStateToProps(state){
-	return { token : state.login._token};
+	return {
+		errorMessage : state.login.error
+	};
 }
 
 
