@@ -6,6 +6,8 @@
 
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { browserHistory } from 'react-router';
+
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
@@ -96,6 +98,8 @@ export function loginCheck(props){
 		return axios.post(`${ROOT_URL}/auth/login`, props).then(response => {
 			cookies.set('_token', response.data.token, {path: '/'});
 			dispatch({type: AUTH_USER});
+			// browserHistory.push('/');
+			// console.log('here');
 		})
 		.catch((error) => {
 			//console.log(error.response);
