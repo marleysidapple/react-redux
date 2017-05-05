@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-
 class SignupController extends Controller
 {
     public function create(SignupRequest $request)
@@ -29,7 +28,7 @@ class SignupController extends Controller
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
-            return response()->json(['error'=>'something went wrong'], 401);
+            return response()->json(['error' => 'something went wrong'], 401);
         }
         return response()->json(['success' => 'user registered successfully'], 200);
     }
@@ -51,6 +50,33 @@ class SignupController extends Controller
 
         // all good so return the token
         return response()->json(compact('token'));
+    }
+
+    public function userDetail($token)
+    {
+        $user = JWTAuth::toUser($token);
+
+        try {
+            if (!$user) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+
+        } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+
+        }
+
+        // the token is valid and we have found the user via the sub claim
+        return response()->json(compact('user'));
     }
 
 }

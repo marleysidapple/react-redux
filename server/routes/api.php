@@ -64,5 +64,11 @@ $api->version('v1', function ($api) {
 	 	*/
 	 	$api->get('post/destroy/{id}', 'PostController@destroy'); 
 
+	 	/**
+	 	* @param string $token
+	 	* get user details
+	 	*/
+	 	$api->get('auth/user/{token?}', 'SignupController@userDetail');
+
 	 }); //end of group
 });
