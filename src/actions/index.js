@@ -6,7 +6,7 @@
 
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import { browserHistory } from 'react-router';
+import { browserHistory } from 'react-router';  
 
 
 
@@ -99,13 +99,12 @@ export function loginCheck(props){
 	return function(dispatch){
 		return axios.post(`${ROOT_URL}/auth/login`, props).then(response => {
 			cookies.set('_token', response.data.token, {path: '/'});
-			dispatch({type: AUTH_USER});
-
-			// browserHistory.push('/');
-			// console.log('here');
+			dispatch({
+					type: AUTH_USER, 
+					payload: response.data
+			});
 		})
 		.catch((error) => {
-			//console.log(error.response);
 			errorHandler(dispatch, error.response, AUTH_ERROR)
 		});
 	}

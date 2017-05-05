@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { loginCheck } from './../../actions/index';
 import { connect } from 'react-redux'; 
@@ -15,13 +15,16 @@ const renderField = ({ input, label, type, meta: { touched, error, invalid, warn
 
 class Login extends Component {
 
+
+	static contextTypes = {
+	   router:PropTypes.object
+	};
+
 	onSubmit(props){
-		this.props.loginCheck(props);
-		/*
-			this.props.loginCheck(props).then((resp) => {
-				console.log(this.props.token);
-			});
-		*/
+		//this.props.loginCheck(props);
+		this.props.loginCheck(props).then((res)=> {
+			//
+		});
 	}
 
 	renderAlert() {
@@ -32,7 +35,7 @@ class Login extends Component {
 	        </div>
 	      );
 	    }
-	  }
+	}
 
 
 
@@ -67,7 +70,7 @@ function validate(vals){
 
 function mapStateToProps(state){
 	return {
-		errorMessage : state.login.error
+		errorMessage : state.login.error,
 	};
 }
 
