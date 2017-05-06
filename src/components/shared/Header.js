@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {NavLink, Redirect, Link, Switch,} from 'react-router-dom';
+import { loginCheck } from './../../actions/index';
+import { connect } from 'react-redux'; 
 
 class Header extends Component {
 
+
 	render(){
-		//const { isAuthenticated } = this.props;
 		return (
 			 <nav className="navbar navbar-inverse navbar-fixed-top">
 			      <div className="container">
@@ -23,6 +25,7 @@ class Header extends Component {
 			            <li><Link to="/signup">Signup</Link></li>
 			            <li><Link to="/post">Posts</Link></li>
 			            <li><Link to="/login">Login</Link></li>
+			            { this.props.authenticationStatus ?  <li><Link to="/logout">Logout</Link></li> : '' }
 			          </ul>
 			        </div>
 			      </div>
@@ -31,8 +34,15 @@ class Header extends Component {
 	}
 }
 
+
+function mapStateToProps(state){
+	return {
+		authenticationStatus : state.login.authenticated
+	};
+}
+
 // Header.PropTypes = {
 // 	isAuthenticated: PropTypes.bool.isRequired
 // }
 
-export default Header;
+export default connect(mapStateToProps, { loginCheck })(Header);
