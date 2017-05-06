@@ -16,6 +16,7 @@ export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const FETCH_POST_BY_ID = 'FETCH_POST_BY_ID';
 export const AUTH_USER = 'AUTH_USER';
+export const UNAUTH_USER = 'UNAUTH_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 const ROOT_URL = 'http://localhost:8000/api/v1';
 
@@ -109,4 +110,16 @@ export function loginCheck(props){
 		});
 	}
 }
+
+export function logoutUser(props) {  
+  return function(dispatch){
+		return axios.post(`${ROOT_URL}/auth/logout`, props).then(response => {
+			cookies.remove('_token');
+			dispatch({
+					type: UNAUTH_USER, 
+			});
+		});
+	}
+}
+
 

@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import {NavLink, Redirect, Link, Switch,} from 'react-router-dom';
 import { loginCheck } from './../../actions/index';
 import { connect } from 'react-redux'; 
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 class Header extends Component {
-
 
 	render(){
 		return (
@@ -24,7 +26,7 @@ class Header extends Component {
 			            <li className="active"><Link to="/home">Home</Link></li>
 			            <li><Link to="/signup">Signup</Link></li>
 			            <li><Link to="/post">Posts</Link></li>
-			            <li><Link to="/login">Login</Link></li>
+			            { !this.props.authenticationStatus ? <li><Link to="/login">Login</Link></li> : '' }
 			            { this.props.authenticationStatus ?  <li><Link to="/logout">Logout</Link></li> : '' }
 			          </ul>
 			        </div>
