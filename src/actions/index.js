@@ -101,7 +101,6 @@ export function loginCheck(props){
 		return axios.post(`${ROOT_URL}/auth/login`, props).then(response => {
 			cookies.set('_token', response.data.token, {
 				path: '/',
-				maxAge: 3600
 			});
 			dispatch({
 					type: AUTH_USER, 
