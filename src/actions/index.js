@@ -2,7 +2,7 @@
 // 1. make a route
 // 2. create an action for api
 // 3. catch the data or response from the action using reducer and produce application state
-// 4. the connect the component with the action using (connect)
+// 4. the connect the component with the action using connect
 
 import axios from 'axios';
 import Cookies from 'universal-cookie';
