@@ -1,15 +1,22 @@
-import React, { Component } from 'react';
-import {NavLink, Redirect, Link, Switch,} from 'react-router-dom';
+import React, { Component, PropTypes } from 'react';
+import {NavLink, Redirect, Link, Switch} from 'react-router-dom';
 import { loginCheck } from './../../actions/index';
 import { connect } from 'react-redux'; 
-import Cookies from 'universal-cookie';
+//import Cookies from 'universal-cookie';
 
-const cookies = new Cookies();
+//const cookies = new Cookies();
 
 class Header extends Component {
 
+
+	static contextTypes = {
+	   router:PropTypes.object
+	};
+
 	logOutUser(){
+			//console.log('asd');
 			localStorage.removeItem('_token');
+			this.context.router.history.push('/post');
 	}
 
 	render(){
