@@ -7,7 +7,6 @@ import Addpost from './components/modules/add_post';
 import Signup from './components/modules/Signup';
 import Login from './components/modules/Login';
 import Postdetail from './components/modules/postdetail';
-import Logout from './components/modules/Logout';
 import './index.css';
 import { BrowserRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -35,7 +34,6 @@ ReactDOM.render(
 				    <Route path="/post/new" component={Addpost} />				
 				    <Route path="/post/detail/:id" component={Postdetail} />				
 				    <Route path="/login" component={Login} />
-				    <Route path="/logout" component={Logout} />				
 			    </App>
 		  </BrowserRouter>
 	  </Provider>,

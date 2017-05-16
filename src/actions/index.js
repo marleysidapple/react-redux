@@ -114,15 +114,6 @@ export function loginCheck(props){
 	}
 }
 
-export function logoutUser(props) {  
-  return function(dispatch){
-		return axios.post(`${ROOT_URL}/auth/logout`, props).then(response => {
-			cookies.remove('_token');
-			dispatch({
-					type: UNAUTH_USER, 
-			});
-		});
-	}
-}
+
 
 

@@ -8,6 +8,10 @@ const cookies = new Cookies();
 
 class Header extends Component {
 
+	logOutUser(){
+			localStorage.removeItem('_token');
+	}
+
 	render(){
 		return (
 			 <nav className="navbar navbar-inverse navbar-fixed-top">
@@ -27,7 +31,7 @@ class Header extends Component {
 			            <li><Link to="/signup">Signup</Link></li>
 			            <li><Link to="/post">Posts</Link></li>
 			            { !this.props.tokenCheck ? <li><Link to="/login">Login</Link></li> : '' }
-			            { this.props.tokenCheck ?  <li><Link to="/logout">Logout</Link></li> : '' }
+			            { this.props.tokenCheck ?  <li><a onClick={this.logOutUser.bind(this)}>Logout</a></li> : '' }
 			          </ul>
 			        </div>
 			      </div>
