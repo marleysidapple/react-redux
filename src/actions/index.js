@@ -10,7 +10,6 @@ import Cookies from 'universal-cookie';
 
 
 
-export const LOGOUT_USER = 'LOGOUT_USER';
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
@@ -99,10 +98,11 @@ export function loginCheck(props){
 export function loginCheck(props){
 	return function(dispatch){
 		return axios.post(`${ROOT_URL}/auth/login`, props).then(response => {
-			cookies.set('_token', response.data.token, {
-				path: '/',
-				maxAge: 3600
-			});
+			// cookies.set('_token', response.data.token, {
+			// 	path: '/',
+			// 	maxAge: 3600
+			// });
+			localStorage.setItem('_token', response.data.token);
 			dispatch({
 					type: AUTH_USER, 
 					payload: response.data

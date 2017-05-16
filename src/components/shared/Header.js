@@ -26,8 +26,8 @@ class Header extends Component {
 			            <li className="active"><Link to="/home">Home</Link></li>
 			            <li><Link to="/signup">Signup</Link></li>
 			            <li><Link to="/post">Posts</Link></li>
-			            { !this.props.authenticationStatus ? <li><Link to="/login">Login</Link></li> : '' }
-			            { this.props.authenticationStatus ?  <li><Link to="/logout">Logout</Link></li> : '' }
+			            { !this.props.tokenCheck ? <li><Link to="/login">Login</Link></li> : '' }
+			            { this.props.tokenCheck ?  <li><Link to="/logout">Logout</Link></li> : '' }
 			          </ul>
 			        </div>
 			      </div>
@@ -39,7 +39,8 @@ class Header extends Component {
 
 function mapStateToProps(state){
 	return {
-		authenticationStatus : state.login.authenticated
+		authenticationStatus : state.login.authenticated,
+		tokenCheck: localStorage.getItem('_token')
 	};
 }
 
