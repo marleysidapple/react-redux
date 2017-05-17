@@ -8,7 +8,7 @@ export default function(state = INITIAL_STATE, action){
 		case AUTH_USER:
 			// ...state refers to the current state
 			//return { ...state, _token: action.payload.data };
-			return { ...state, error: '', message: '', authenticated: true, logUser: action.payload };
+			return { ...state, error: '', message: '', authenticated: true, logUser: action.payload};
 		case AUTH_ERROR:
      		 return { ...state, error: action.payload, authenticated: false };
 		default:
