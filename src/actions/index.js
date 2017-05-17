@@ -16,6 +16,7 @@ export const DELETE_POST = 'DELETE_POST';
 export const FETCH_POST_BY_ID = 'FETCH_POST_BY_ID';
 export const AUTH_USER = 'AUTH_USER';
 export const UNAUTH_USER = 'UNAUTH_USER';
+export const FETCH_USER = 'FETCH_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 const ROOT_URL = 'http://localhost:8000/api/v1';
 
@@ -107,11 +108,24 @@ export function loginCheck(props){
 					type: AUTH_USER, 
 					payload: response.data
 			});
+
+			return axios.get(`${ROOT_URL}/auth/user/${response.data.token}`).then(response => {
+				dispatch({
+					type: FETCH_USER,
+					payload: response.data
+				});
+			});
 		})
 		.catch((error) => {
 			errorHandler(dispatch, error.response, AUTH_ERROR)
 		});
 	}
+}
+
+
+export function getUserDetail(props){
+	console.log('asdas');
+	return 'hello';
 }
 
 

@@ -49,6 +49,7 @@ class Header extends Component {
 
 
 function mapStateToProps(state){
+	console.log(state);
 	return {
 		authenticationStatus : state.login.authenticated,
 		tokenCheck: localStorage.getItem('_token')

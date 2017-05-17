@@ -27,13 +27,14 @@ class Login extends Component {
 	};
 
 	onSubmit(props){
-		//this.props.loginCheck(props);
 		this.props.loginCheck(props).then(()=>{
 			this.checkForValidity();
 		});
 	}
 
 	
+
+
 
 	checkForValidity(){
 		if (this.props.user != undefined || this.props.user != null){
@@ -87,7 +88,6 @@ function validate(vals){
 }
 
 function mapStateToProps(state){
-	console.log(state.login.showLoad);
 	return {
 		errorMessage : state.login.error,
 		user: state.login.logUser,
