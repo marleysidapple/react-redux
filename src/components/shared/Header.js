@@ -39,6 +39,7 @@ class Header extends Component {
 			            <li><Link to="/post">Posts</Link></li>
 			            { this.props.tokenCheck == undefined ? <li><Link to="/login">Login</Link></li> : '' }
 			            { this.props.tokenCheck ?  <li><a onClick={this.logOutUser.bind(this)}>Logout</a></li> : '' }
+			          	<li className="pull-right"></li>
 			          </ul>
 			        </div>
 			      </div>
@@ -49,10 +50,9 @@ class Header extends Component {
 
 
 function mapStateToProps(state){
-	console.log(state);
 	return {
 		authenticationStatus : state.login.authenticated,
-		tokenCheck: localStorage.getItem('_token')
+		tokenCheck: localStorage.getItem('_token'),
 	};
 }
 

@@ -87,15 +87,7 @@ export function createPost(props){
 	}
 }
 
-/*
-export function loginCheck(props){
-	const request = axios.post(`${ROOT_URL}/auth/login`, props);
-	return {
-		type: LOGIN_CHECK,
-		payload: request
-	}
-}
-*/
+
 export function loginCheck(props){
 	return function(dispatch){
 		return axios.post(`${ROOT_URL}/auth/login`, props).then(response => {
@@ -110,6 +102,7 @@ export function loginCheck(props){
 			});
 
 			return axios.get(`${ROOT_URL}/auth/user/${response.data.token}`).then(response => {
+				localStorage.setItem('userdetail', JSON.stringify(response.data.user));
 				dispatch({
 					type: FETCH_USER,
 					payload: response.data
@@ -123,10 +116,6 @@ export function loginCheck(props){
 }
 
 
-export function getUserDetail(props){
-	console.log('asdas');
-	return 'hello';
-}
 
 
 
