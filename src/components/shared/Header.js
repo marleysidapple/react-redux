@@ -16,6 +16,7 @@ class Header extends Component {
 	logOutUser(){
 			//console.log('asd');
 			localStorage.removeItem('_token');
+			localStorage.removeItem('userdetail');
 			this.context.router.history.push('/post');
 	}
 
@@ -30,7 +31,7 @@ class Header extends Component {
 			            <span className="icon-bar"></span>
 			            <span className="icon-bar"></span>
 			          </button>
-			          <Link to="/" className="navbar-brand">Simple Project</Link>
+			          <Link to="/" className="navbar-brand">{  localStorage.getItem('userdetail') == null ? 'Simple Project' : JSON.parse(localStorage.getItem('userdetail')).fullname}</Link>
 			        </div>
 			        <div id="navbar" className="collapse navbar-collapse">
 			          <ul className="nav navbar-nav">

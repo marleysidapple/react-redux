@@ -102,7 +102,7 @@ export function loginCheck(props){
 			});
 
 			return axios.get(`${ROOT_URL}/auth/user/${response.data.token}`).then(response => {
-				localStorage.setItem('userdetail', JSON.stringify(response.data.user));
+				localStorage.setItem('userdetail', JSON.stringify(response.data));
 				dispatch({
 					type: FETCH_USER,
 					payload: response.data

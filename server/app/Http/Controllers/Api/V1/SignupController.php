@@ -76,7 +76,7 @@ class SignupController extends Controller
         }
 
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user'));
+        return response()->json($user);
     }
 
 }
