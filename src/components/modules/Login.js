@@ -19,9 +19,6 @@ class Login extends Component {
 
 	constructor(props){
 		super(props);
-		this.state = {
-			showLoading: false
-		}
 	}
 
 
@@ -36,10 +33,7 @@ class Login extends Component {
 		});
 	}
 
-	showLoggingIn(){
-		//console.log(this.props.authStatus);
-		this.setState({showLoading: this.props.authStatus});
-	}
+	
 
 	checkForValidity(){
 		if (this.props.user != undefined || this.props.user != null){
@@ -63,8 +57,7 @@ class Login extends Component {
 		const { fields: { email, password }, handleSubmit, pristine, reset, submitting} = this.props;
 		return(
 				<div className="login-wrapper">
-
-					{!this.props.authStatus ? <div className="loading-wrapper col-sm-2 col-sm-offset-5">
+					{this.props.authStatus ? <div className="loading-wrapper col-sm-2 col-sm-offset-5">
 						<img src={loading} className="loading-icon"/> Processing....
 					</div> : ''}
 					<div className="clearfix"></div>
@@ -72,7 +65,7 @@ class Login extends Component {
 					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 						<Field name="email" type="text" component={renderField} label="Email"/>
 						<Field name="password" type="password" component={renderField} label="Password"/>
-						<button className="btn btn-primary btn-sm" onClick={this.showLoggingIn.bind(this)}  disabled={pristine || submitting}>Login</button>&nbsp; &nbsp;
+						<button className="btn btn-primary btn-sm" disabled={pristine || submitting}>Login</button>&nbsp; &nbsp;
 					</form>
 				</div>
 			);
@@ -94,11 +87,11 @@ function validate(vals){
 }
 
 function mapStateToProps(state){
-	//console.log(state.login.authenticated);
+	console.log(state.login.showLoad);
 	return {
 		errorMessage : state.login.error,
 		user: state.login.logUser,
-		authStatus:state.login.authenticated
+		authStatus:state.login.showLoad
 	};
 }
 
