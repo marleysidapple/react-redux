@@ -2,9 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import {NavLink, Redirect, Link, Switch} from 'react-router-dom';
 import { loginCheck } from './../../actions/index';
 import { connect } from 'react-redux'; 
-//import Cookies from 'universal-cookie';
-
-//const cookies = new Cookies();
 
 class Header extends Component {
 
