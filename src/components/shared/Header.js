@@ -31,7 +31,7 @@ class Header extends Component {
 			            <span className="icon-bar"></span>
 			            <span className="icon-bar"></span>
 			          </button>
-			          <Link to="/" className="navbar-brand">{  localStorage.getItem('userdetail') == null ? 'Simple Project' : JSON.parse(localStorage.getItem('userdetail')).fullname}</Link>
+			          <Link to="/" className="navbar-brand">{  this.props.currentUser == null ? 'Simple Project' : JSON.parse(this.props.currentUser).fullname}</Link>
 			        </div>
 			        <div id="navbar" className="collapse navbar-collapse">
 			          <ul className="nav navbar-nav">
@@ -54,6 +54,7 @@ function mapStateToProps(state){
 	return {
 		authenticationStatus : state.login.authenticated,
 		tokenCheck: localStorage.getItem('_token'),
+		currentUser:  localStorage.getItem('userdetail')
 	};
 }
 
