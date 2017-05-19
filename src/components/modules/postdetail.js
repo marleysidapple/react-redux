@@ -33,7 +33,7 @@ class Postdetail extends Component {
 		return(
 				<div>
 					{post.title} <br/>
-					{post.author} <br/>
+					<i>{post.author}</i> <br/>
 					{post.description} <br/>
 					<br/>
 					<button onClick={this.onDelete.bind(this, post.id)} className="btn btn-primary btn-sm">Delete Post</button>
