@@ -31,12 +31,20 @@ class Postdetail extends Component {
 	    }
 
 		return(
-				<div>
-					{post.title} <br/>
-					<i>{post.author}</i> <br/>
-					{post.description} <br/>
-					<br/>
-					<button onClick={this.onDelete.bind(this, post.id)} className="btn btn-primary btn-sm">Delete Post</button>
+				<div className="panel panel-default">
+					<div className="panel-heading">
+						{post.title} 
+					</div>
+
+					<div className="panel-body">
+						{post.description} 
+						<hr/>
+						Author: <i>{post.author}</i>
+					</div>
+					
+					<div className="panel panel-footer">
+						<button onClick={this.onDelete.bind(this, post.id)} className="btn btn-primary btn-sm">Delete Post</button>
+					</div>
 				</div>
 			);
 	}
