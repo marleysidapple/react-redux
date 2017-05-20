@@ -16,9 +16,10 @@ class Post extends Component {
 			return this.props.posts.map((post) => {
 				return (
 						<div className="panel panel-default" key={post.id}>
-							<span>
+							<div className="panel-body">
 								<Link to={'/post/detail/'+post.id}>{post.title}</Link>
-							</span>
+								<div className="pull-right"><i>{post.author}</i></div>
+							</div>
 						</div>
 				);
 			});
@@ -29,6 +30,7 @@ class Post extends Component {
 			<div className="post-wrapper">
 				<span><Link to='/post/new' className='pull-right btn btn-primary btn-sm'>Add New Post</Link></span>
 				<div className="clearfix"></div>
+				<hr/>
 				<div className="single-post-wrapper">	
 					{this.renderPosts()}
 				</div>
