@@ -57,18 +57,27 @@ class Login extends Component {
 	render(){
 		const { fields: { email, password }, handleSubmit, pristine, reset, submitting} = this.props;
 		return(
-				<div className="login-wrapper">
-					{this.props.authStatus ? <div className="loading-wrapper col-sm-2 col-sm-offset-5">
-						<img src={loading} className="loading-icon"/> Processing....
-					</div> : ''}
-					<div className="clearfix"></div>
-				{this.renderAlert()}
-					<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-						<Field name="email" type="text" component={renderField} label="Email"/>
-						<Field name="password" type="password" component={renderField} label="Password"/>
-						<button className="btn btn-primary btn-sm" disabled={pristine || submitting}>Login</button>&nbsp; &nbsp;
-					</form>
+
+			<div className="panel panel-default">
+				<div className="panel-heading">
+					Please Login
 				</div>
+
+				<div className="panel-body">
+					<div className="login-wrapper">
+						{this.props.authStatus ? <div className="loading-wrapper col-sm-2 col-sm-offset-5">
+							<img src={loading} className="loading-icon"/> Processing....
+						</div> : ''}
+						<div className="clearfix"></div>
+					{this.renderAlert()}
+						<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+							<Field name="email" type="text" component={renderField} label="Email"/>
+							<Field name="password" type="password" component={renderField} label="Password"/>
+							<button className="btn btn-primary btn-sm" disabled={pristine || submitting}>Login</button>&nbsp; &nbsp;
+						</form>
+					</div>
+				</div>
+			</div>
 			);
 	}
 }

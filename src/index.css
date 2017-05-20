@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.login-wrapper{
+	padding: 20px;
+}
+
 .loading-icon{
 	width: 40px;
 }
