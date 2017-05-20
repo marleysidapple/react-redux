@@ -58,7 +58,7 @@ class Login extends Component {
 		const { fields: { email, password }, handleSubmit, pristine, reset, submitting} = this.props;
 		return(
 
-			<div className="panel panel-default">
+			<div className="panel panel-default col-sm-6 col-sm-offset-3">
 				<div className="panel-heading">
 					Please Login
 				</div>
