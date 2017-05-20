@@ -28,7 +28,7 @@ class Post extends Component {
 	render(){
 		return(
 			<div className="post-wrapper">
-				<span><Link to='/post/new' className='pull-right btn btn-primary btn-sm'>Add New Post</Link></span>
+				{this.props.token ? <span><Link to='/post/new' className='pull-right btn btn-primary btn-sm'>Add New Post</Link></span> : '' }
 				<div className="clearfix"></div>
 				<hr/>
 				<div className="single-post-wrapper">	
@@ -44,7 +44,10 @@ class Post extends Component {
 // }
 
 function mapStateToProps(state){
-	return { posts : state.posts.all};
+	return { 
+		posts : state.posts.all,
+		token : localStorage.getItem('_token')
+	};
 }
 
 

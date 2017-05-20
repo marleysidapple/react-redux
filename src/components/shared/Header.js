@@ -33,7 +33,7 @@ class Header extends Component {
 			        <div id="navbar" className="collapse navbar-collapse">
 			          <ul className="nav navbar-nav">
 			            <li className="active"><Link to="/home">Home</Link></li>
-			            <li><Link to="/signup">Signup</Link></li>
+			           {this.props.tokenCheck == undefined ? <li><Link to="/signup">Signup</Link></li> : ''}
 			            <li><Link to="/post">Posts</Link></li>
 			            { this.props.tokenCheck == undefined ? <li><Link to="/login">Login</Link></li> : '' }
 			            { this.props.tokenCheck ?  <li><a onClick={this.logOutUser.bind(this)}>Logout</a></li> : '' }
