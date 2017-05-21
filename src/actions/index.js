@@ -5,7 +5,6 @@
 // 4. the connect the component with the action using connect
 
 import axios from 'axios';
-import Cookies from 'universal-cookie';
 
 
 
@@ -20,7 +19,6 @@ export const FETCH_USER = 'FETCH_USER';
 export const AUTH_ERROR = 'AUTH_ERROR';
 const ROOT_URL = 'http://localhost:8000/api/v1';
 
-const cookies = new Cookies();
 
 
 export function errorHandler(dispatch, error, type){

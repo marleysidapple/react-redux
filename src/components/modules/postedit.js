@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { fetchPostById } from './../../actions/index';
 
 class Postedit extends Component {
 
@@ -7,12 +8,24 @@ class Postedit extends Component {
 		super(props);
 	}
 
+	componentDidMount(){
+		this.props.fetchPostById(this.props.match.params.id);
+	}
+
 
 	render(){
 
+		const { post } = this.props;
+
+		if (!post) {
+	      return <div>Loading...</div>;
+	    }
+
 		return (
 			<div>
-				this is edit page
+				{post.author}
+				{post.title}
+				{post.description}
 			</div>
 
 			);
@@ -20,6 +33,12 @@ class Postedit extends Component {
 
 }
 
+function mapStateToProps(state){
+	return {
+		post: state.posts.post
+	}
+}
 
 
-export default Postedit;
+
+export default connect(mapStateToProps, {fetchPostById})(Postedit);
