@@ -70,5 +70,12 @@ $api->version('v1', function ($api) {
 	 	*/
 	 	$api->get('auth/user/{token?}', 'SignupController@userDetail');
 
+	 	/**
+	 	* @param int id
+	 	* @param Request Array
+	 	*/
+	 	$api->post('post/edit/{id}', 'PostController@updatePost');
+
+
 	 }); //end of group
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use DB;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -54,21 +55,30 @@ class PostController extends Controller
         return response()->json(['post' => $post], 200);
     }
 
-    public function update()
+    public function updatePost(Request $request, $id)
     {
+        $post = Post::find($id);
+        if ($post) {
+            $post->title       = $request->title;
+            $post->description = trim($request->description);
+            $post->author      = $request->author;
+            $post->keyword     = $request->keyword;
+            $post->save();
+            return response()->json(['success' => 'post updated'], 200);
 
+        }
     }
 
     /**
-    * @param int $id
-    * return message
-    * delete post
-    */
+     * @param int $id
+     * return message
+     * delete post
+     */
     public function destroy($id)
     {
         try {
             $post = Post::find($id);
-            if (is_null($post)){
+            if (is_null($post)) {
                 return response()->json(['error' => 'Invalid data'], 401);
             }
             $post->delete();
