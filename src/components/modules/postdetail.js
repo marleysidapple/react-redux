@@ -43,6 +43,7 @@ class Postdetail extends Component {
 					</div>
 					
 					<div className="panel panel-footer">
+						<a href={'/post/edit/' + post.id} className="btn btn-primary btn-sm">Edit Post</a>&nbsp;
 						<button onClick={this.onDelete.bind(this, post.id)} className="btn btn-primary btn-sm">Delete Post</button>
 					</div>
 				</div>

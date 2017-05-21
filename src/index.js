@@ -7,6 +7,7 @@ import Addpost from './components/modules/add_post';
 import Signup from './components/modules/Signup';
 import Login from './components/modules/Login';
 import Postdetail from './components/modules/postdetail';
+import Postedit from './components/modules/postedit';
 import './index.css';
 import { BrowserRouter, Route, NavLink, Redirect, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -33,6 +34,7 @@ ReactDOM.render(
 				    <Route exact path="/post" component={Post} /> 
 				    <Route path="/post/new" component={Addpost} />				
 				    <Route path="/post/detail/:id" component={Postdetail} />				
+				    <Route path="/post/edit/:id" component={Postedit} />				
 				    <Route path="/login" component={Login} />
 			    </App>
 		  </BrowserRouter>
