@@ -31,7 +31,7 @@ class Postedit extends Component {
 	}
 
 	onSubmit(){
-		console.log('asd');
+		console.log('This post is submitted');
 	}
 
 
@@ -53,7 +53,7 @@ class Postedit extends Component {
 					<Field name="description" type="text"  component={renderFieldForTextArea} label="Description"/>
 					<button className="btn btn-primary btn-sm"  disabled={pristine || submitting}>Update</button>&nbsp; &nbsp;
 				</form>
-			</div>
+			</div>[]
 
 			);
 	}
