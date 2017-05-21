@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
-import { fetchPostById } from './../../actions/index';
+import { fetchPostById, updatePost } from './../../actions/index';
 
 const renderField = ({ input, label, type, meta: { touched, error, invalid, warning } }) => (
 	 <div className={`form-group ${touched && invalid ? 'has-error' : ''}`}>
@@ -25,16 +25,13 @@ const renderField = ({ input, label, type, meta: { touched, error, invalid, warn
 
 class Postedit extends Component {
 
-	constructor(props){
-		super(props);
-	}
 
 	componentWillMount(){
 		this.props.fetchPostById(this.props.match.params.id);
 	}
 
-	handleSubmit(){
-
+	onSubmit(){
+		console.log('asd');
 	}
 
 
@@ -49,7 +46,7 @@ class Postedit extends Component {
 
 		return (
 			<div>
-				<form>
+				<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 					<Field name="title" type="text" value={post.title} component={renderField} label="Title"/>
 					<Field name="author" type="text"  component={renderField} label="Author"/>
 					<Field name="keyword" type="text"  component={renderField} label="Keyword"/>

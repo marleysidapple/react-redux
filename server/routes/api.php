@@ -74,7 +74,7 @@ $api->version('v1', function ($api) {
 	 	* @param int id
 	 	* @param Request Array
 	 	*/
-	 	$api->post('post/edit/{id}', 'PostController@updatePost');
+	 	$api->post('post/update/{id}', 'PostController@updatePost');
 
 
 	 }); //end of group

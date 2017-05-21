@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { fetchPostById, deletePost } from './../../actions/index';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class Postdetail extends Component {
 
@@ -43,7 +43,7 @@ class Postdetail extends Component {
 					</div>
 					
 					<div className="panel panel-footer">
-						<a href={'/post/edit/' + post.id} className="btn btn-primary btn-sm">Edit Post</a>&nbsp;
+						<Link to={'/post/edit/'+post.id} className="btn btn-primary btn-sm">Edit</Link>&nbsp;
 						<button onClick={this.onDelete.bind(this, post.id)} className="btn btn-primary btn-sm">Delete Post</button>
 					</div>
 				</div>

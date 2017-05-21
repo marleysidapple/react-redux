@@ -86,6 +86,15 @@ export function createPost(props){
 }
 
 
+export function updatePost(props){
+
+	//const request = axios.post(`${ROOT_URL}/post/update`);
+	return {
+		
+	}
+}
+
+
 export function loginCheck(props){
 	return function(dispatch){
 		return axios.post(`${ROOT_URL}/auth/login`, props).then(response => {
